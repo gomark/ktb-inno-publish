@@ -35,7 +35,16 @@ export CLOUDSDK_CORE_PROJECT=putti-ktb-inno-bootcamp
 
 const uuid = require('uuid');
 
-function main(
+
+function sleep(mil) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, mil);
+    });
+  }
+
+async function main(
   topicName = 'projects/putti-ktb-inno-bootcamp/topics/inno-bootcamp-topic-1',
   data = JSON.stringify({foo: uuid.v4()})
 ) {
@@ -67,11 +76,15 @@ function main(
     }
   }
 
+  console.log("sleeping for 5 sec");
+  await sleep(5000);
+  console.log('wake up');
+
   var i;
   for (i = 0; i < 9; i++) {
     publishMessage();
-  }
-  
+  }  
+
   // [END pubsub_publish_with_error_handler]
   // [END pubsub_quickstart_publisher]
 }
@@ -80,4 +93,5 @@ process.on('unhandledRejection', err => {
   console.error(err.message);
   process.exitCode = 1;
 });
+
 main(...process.argv.slice(2));
