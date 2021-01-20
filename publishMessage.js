@@ -80,10 +80,16 @@ async function main(
   await sleep(5000);
   console.log('wake up');
 
+  /*
   var i;
   for (i = 0; i < 9; i++) {
-    publishMessage();
+    await publishMessage();
   }  
+  */
+
+  while (true) {
+    await publishMessage();
+  }
 
   // [END pubsub_publish_with_error_handler]
   // [END pubsub_quickstart_publisher]
