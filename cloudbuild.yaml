@@ -20,7 +20,7 @@ steps:
   - '${_DEPLOYMENT_NAME}'
   - '${_POD_SPEC}=gcr.io/$PROJECT_ID/test-publish-1:$COMMIT_SHA'
   - '--namespace'
-  - 'inno'
+  - 'inno-2'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
   - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'
